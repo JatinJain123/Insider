@@ -4,17 +4,17 @@ Overview
 This is a dynamic News App built with Jetpack Compose, Kotlin, and Retrofit. The app fetches real-time news articles from the News API and displays them in a user-friendly interface. The project is designed with scalability and maintainability in mind, employing modern Android development practices and architecture components.
 
 Features
--> Fetches and displays top headlines from various countries.
--> Fetches news articles based on custom queries, sources, or keywords.
--> Robust architecture with ViewModel and MutableState for efficient state management and seamless user experience.
--> Error handling for network and data retrieval issues.
+1) Fetches and displays top headlines from various countries.
+2) Fetches news articles based on custom queries, sources, or keywords.
+3) Robust architecture with ViewModel and MutableState for efficient state management and seamless user experience.
+4) Error handling for network and data retrieval issues.
 
 Technologies Used
--> Jetpack Compose: For building modern, declarative UI.
--> Kotlin: The primary programming language.
--> Retrofit: For API calls and data fetching.
--> ViewModel: For managing UI-related data in a lifecycle-aware way.
--> Coroutines: For managing asynchronous tasks.
+1) Jetpack Compose: For building modern, declarative UI.
+2) Kotlin: The primary programming language.
+3) Retrofit: For API calls and data fetching.
+4) ViewModel: For managing UI-related data in a lifecycle-aware way.
+5) Coroutines: For managing asynchronous tasks.
 
 Installation
 1. Clone the repository: https://github.com/JatinJain123/Insider/
@@ -35,8 +35,8 @@ How It Works
     Jetpack Compose components render the news articles dynamically based on the state.
 
 Future Enhancements
--> Advanced filtering and sorting options.
--> Addition of search functionality using effective data structures and algorithms.
--> Addition of more news categories and sources.
--> Improved UI/UX for better user interaction.
--> Offline support for caching news articles.
+1) Advanced filtering and sorting options.
+2) Addition of search functionality using effective data structures and algorithms.
+3) Addition of more news categories and sources.
+4) Improved UI/UX for better user interaction.
+5) Offline support for caching news articles.
