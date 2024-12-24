@@ -6,12 +6,12 @@ This is a dynamic News App built with Jetpack Compose, Kotlin, and Retrofit. The
 Features
 1) Fetches and displays top headlines from various countries.
 2) Fetches news articles based on custom queries, sources, or keywords.
-3) Robust architecture with ViewModel and MutableState for efficient state management and seamless user experience.
+3) Robust architecture with ViewModel and MVVM for efficient state management and seamless user experience.
 4) Error handling for network and data retrieval issues.
 
 Technologies Used
-1) Jetpack Compose: For building modern, declarative UI.
 2) Kotlin: The primary programming language.
+1) Jetpack Compose: For building modern, declarative UI.
 3) Retrofit: For API calls and data fetching.
 4) ViewModel: For managing UI-related data in a lifecycle-aware way.
 5) Coroutines: For managing asynchronous tasks.
