@@ -9,9 +9,9 @@ Features
 3) Robust architecture with ViewModel and MVVM for efficient state management and seamless user experience.
 4) Error handling for network and data retrieval issues.
 
-Technologies Used
-2) Kotlin: The primary programming language.
-1) Jetpack Compose: For building modern, declarative UI.
+Technologies Used   
+1) Kotlin: The primary programming language.
+2) Jetpack Compose: For building modern, declarative UI.
 3) Retrofit: For API calls and data fetching.
 4) ViewModel: For managing UI-related data in a lifecycle-aware way.
 5) Coroutines: For managing asynchronous tasks.
