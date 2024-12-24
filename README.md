@@ -1,6 +1,6 @@
 # Insider
 
-# Overview
+Overview  
 This is a dynamic News App built with Jetpack Compose, Kotlin, and Retrofit. The app fetches real-time news articles from the News API and displays them in a user-friendly interface. The project is designed with scalability and maintainability in mind, employing modern Android development practices and architecture components.
 
 Features
