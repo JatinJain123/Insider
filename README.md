@@ -17,7 +17,7 @@ Technologies Used
 5) Coroutines: For managing asynchronous tasks.
 
 Installation
-1. Clone the repository: https://github.com/JatinJain123/Insider/
+1. Clone the repository: [https://github.com/JatinJain123/Insider/](https://github.com/JatinJain123/Insider.git)
 2. Open the project in Android Studio.
 3. Add your API key from News API to the BuildConfig.NEWS_API_KEY in the code
 4. Build and run the app on an emulator or physical device.
