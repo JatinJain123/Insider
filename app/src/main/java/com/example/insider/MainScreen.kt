@@ -20,7 +20,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Star
@@ -98,6 +97,8 @@ fun TopHeader(
     navigateToSearch: () -> Unit,
     navigateToPlatform: () -> Unit
 ) {
+    var showAccountBox by remember { mutableStateOf(false) }
+
     Box {
         Column(
             modifier = Modifier
@@ -134,26 +135,29 @@ fun TopHeader(
                             .clickable{ navigateToSearch() }
                     )
 
-                    Spacer(Modifier.width(8.dp))
+                    Spacer(Modifier.width(12.dp))
 
                     Image(
-                        painter = painterResource(R.drawable.golobal_icon_image),
+                        painter = painterResource(R.drawable.global_icon_image),
                         contentDescription = null,
                         modifier = Modifier
                             .size(30.dp)
                             .clickable { navigateToPlatform() }
                     )
 
-                    Spacer(Modifier.width(8.dp))
+                    Spacer(Modifier.width(12.dp))
 
-                    Icon(
-                        imageVector = Icons.Default.Menu,
+                    Image(
+                        painter = painterResource(R.drawable.account_circle),
                         contentDescription = null,
-                        tint = Color.Black,
                         modifier = Modifier
                             .size(30.dp)
-                            .clickable{  }
+                            .clickable { showAccountBox = true }
                     )
+
+                    if(showAccountBox) {
+                        MenuBarScreen { showAccountBox = false }
+                    }
                 }
             }
         }

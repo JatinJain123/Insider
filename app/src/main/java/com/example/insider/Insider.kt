@@ -39,13 +39,13 @@ fun Navigation(model: MainViewModel) {
 
         composable(route = Screen.SearchScreen.route) {
             Search(
-                navigateBack = { navController.popBackStack() }
+                navigateBackToMainScreen = { navController.popBackStack() }
             )
         }
 
         composable(route = Screen.OnlinePlatformScreen.route) {
             OnlinePlatform(
-                navigateBack = { navController.navigate(route = Screen.MainScreen.route) }
+                navigateBackToMainScreen = { navController.navigate(route = Screen.MainScreen.route) }
             )
         }
     }

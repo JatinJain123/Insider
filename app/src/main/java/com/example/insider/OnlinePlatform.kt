@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 
 @Composable
 fun OnlinePlatform(
-    navigateBack: () -> Unit
+    navigateBackToMainScreen: () -> Unit
 ){
 
 }
