@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1058967357645",
+    "project_id": "insider-614e7",
+    "storage_bucket": "insider-614e7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1058967357645:android:55ffec2f6e2706cba08184",
+        "android_client_info": {
+          "package_name": "com.example.insider"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUsgKQGhWaCI-G5_84u-6G0CW1ABcyM5A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
