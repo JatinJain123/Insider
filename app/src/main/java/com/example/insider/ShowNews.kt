@@ -17,7 +17,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -131,13 +130,14 @@ fun NewsCard(article: Article) {
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            ClickableText(
-                text = androidx.compose.ui.text.AnnotatedString("Read more..."),
-                onClick = {
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(article.url))
-                    context.startActivity(intent)
-                },
-                style = MaterialTheme.typography.bodyMedium.copy(color = Color(0xFF0288D1))
+            Text(
+                text = "Read more...",
+                style = MaterialTheme.typography.bodyMedium.copy(color = Color(0xFF0288D1)),
+                modifier = Modifier
+                    .clickable {
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(article.url))
+                        context.startActivity(intent)
+                    }
             )
         }
     }

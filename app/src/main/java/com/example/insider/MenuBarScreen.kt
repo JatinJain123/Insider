@@ -1,5 +1,9 @@
 package com.example.insider
 
+import android.content.Context
+import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -20,15 +24,16 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
@@ -49,6 +54,19 @@ fun MenuBarScreen(
     ){
         val dialogWindowProvider = LocalView.current.parent as DialogWindowProvider
         dialogWindowProvider.window.setDimAmount(0.3f)
+
+        val context: Context = LocalContext.current
+        val scope = rememberCoroutineScope()
+        val launcher = rememberLauncherForActivityResult(contract = ActivityResultContracts.StartActivityForResult()) {
+            GoogleSignInUtils.doGoogleSignIn(
+                context = context,
+                scope = scope,
+                launcher = null,
+                onLogin =  {
+                    Toast.makeText(context, "Login Successfully!!", Toast.LENGTH_SHORT).show()
+                }
+            )
+        }
 
         Box(
             modifier = Modifier
@@ -125,9 +143,18 @@ fun MenuBarScreen(
                 Spacer(modifier = Modifier.height(10.dp))
 
                 Button(
-                    onClick = {},
+                    onClick = {
+                        GoogleSignInUtils.doGoogleSignIn(
+                            context = context,
+                            scope = scope,
+                            launcher = launcher,
+                            onLogin =  {
+                                Toast.makeText(context, "Login Successfully!!", Toast.LENGTH_SHORT).show()
+                            }
+                        )
+                    },
                     shape = RoundedCornerShape(8.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFAFDCEB)),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF7ec8e3)),
                     modifier = Modifier
                         .fillMaxWidth(0.8f)
                         .padding(vertical = 8.dp)
@@ -174,20 +201,27 @@ fun MenuBarScreen(
                     Spacer(Modifier.height(8.dp))
 
                     Button(
-                        onClick = {},
+                        onClick = {
+                            GoogleSignInUtils.doGoogleSignIn(
+                                context = context,
+                                scope = scope,
+                                launcher = launcher,
+                                onLogin =  {
+                                    Toast.makeText(context, "Login Successfully!!", Toast.LENGTH_SHORT).show()
+                                }
+                            )
+                        },
                         colors = ButtonDefaults.buttonColors(containerColor = Color.White),
                         shape = RoundedCornerShape(20.dp)
                     ) {
-                        Text(text = "Sign up", color = Color(0xFF4A90E2), fontSize = 14.sp)
+                        Text(text = "Sign up",
+                            color = Color(0xFF4A90E2),
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.Bold
+                        )
                     }
                 }
             }
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun LoginPagePreview() {
-    MenuBarScreen { {} }
 }
