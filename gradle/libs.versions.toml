@@ -23,6 +23,7 @@ navigationCompose = "2.8.5"
 playServicesAuth = "21.3.0"
 retrofit = "2.9.0"
 googleGoogleid = "1.1.1"
+uiTestAndroid = "1.7.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -61,6 +62,7 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 play-services-auth = { module = "com.google.android.gms:play-services-auth", version.ref = "playServicesAuth" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 googleid = { group = "com.google.android.libraries.identity.googleid", name = "googleid", version.ref = "googleGoogleid" }
+androidx-ui-test-android = { group = "androidx.compose.ui", name = "ui-test-android", version.ref = "uiTestAndroid" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

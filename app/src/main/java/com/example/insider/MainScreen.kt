@@ -32,6 +32,7 @@ import androidx.compose.material3.TabRowDefaults.SecondaryIndicator
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -52,7 +53,9 @@ import kotlin.math.absoluteValue
 fun MainScreen(
     model: MainViewModel,
     navigateToSearch: () -> Unit,
-    navigateToPlatform: () -> Unit
+    navigateToPlatform: () -> Unit,
+    loginStatus: MutableState<LoginStatus>,
+    userProfileData: MutableState<UserProfileData>
 ) {
     var selectedTab by remember { mutableIntStateOf(0) }
     val tabs = listOf(
@@ -68,7 +71,9 @@ fun MainScreen(
         Column{
             TopHeader(
                 navigateToSearch = navigateToSearch,
-                navigateToPlatform = navigateToPlatform
+                navigateToPlatform = navigateToPlatform,
+                loginStatus = loginStatus,
+                userProfileData = userProfileData
             )
 
             Box(
@@ -95,7 +100,9 @@ data class TabItem(val title: String, val icon: ImageVector)
 @Composable
 fun TopHeader(
     navigateToSearch: () -> Unit,
-    navigateToPlatform: () -> Unit
+    navigateToPlatform: () -> Unit,
+    loginStatus: MutableState<LoginStatus>,
+    userProfileData: MutableState<UserProfileData>
 ) {
     var showAccountBox by remember { mutableStateOf(false) }
 
@@ -156,7 +163,11 @@ fun TopHeader(
                     )
 
                     if(showAccountBox) {
-                        MenuBarScreen { showAccountBox = false }
+                        MenuBarScreen(
+                            navigateBackToMainScreen = { showAccountBox = false },
+                            loginStatus = loginStatus,
+                            userProfileData = userProfileData
+                        )
                     }
                 }
             }

@@ -14,6 +14,8 @@ import androidx.credentials.exceptions.NoCredentialException
 import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.auth
 import kotlinx.coroutines.CoroutineScope
@@ -28,7 +30,7 @@ class GoogleSignInUtils {
             context: Context,
             scope: CoroutineScope,
             launcher: ManagedActivityResultLauncher<Intent, ActivityResult>?,
-            onLogin: () -> Unit
+            onLogin: (FirebaseUser?) -> Unit
         ) {
             val credentialManager = CredentialManager.create(context = context)
             val request = GetCredentialRequest.Builder()
@@ -48,7 +50,7 @@ class GoogleSignInUtils {
 
                                 user?.let {
                                     if(!it.isAnonymous) {
-                                        onLogin.invoke()
+                                        onLogin.invoke(FirebaseAuth.getInstance().currentUser)
                                     }
                                 }
                             }

@@ -21,3 +21,13 @@ data class NewsResponse (
     val totalResults: Int,
     val articles: List<Article>
 )
+
+data class LoginStatus(
+    var loginStatus: Boolean = false
+)
+
+data class UserProfileData(
+    var name: String? = "",
+    var email: String? = "",
+    var imageId: String? = ""
+)
