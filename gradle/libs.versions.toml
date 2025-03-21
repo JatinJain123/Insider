@@ -1,11 +1,13 @@
 [versions]
 agp = "8.7.0-rc01"
+blurry = "2.1.1"
 coilCompose = "2.5.0"
 converterGson = "2.9.0"
 coreKtxVersion = "1.12.0"
 credentials = "1.5.0-rc01"
 credentialsPlayServicesAuthVersion = "<latest version>"
 credentialsVersion = "<latest version>"
+espressoCoreVersion = "3.5.0"
 firebaseBom = "33.8.0"
 googleid = "1.5.0-rc01"
 googleidVersion = "<latest version>"
@@ -32,11 +34,13 @@ androidx-credentials = { module = "androidx.credentials:credentials", version.re
 androidx-credentials-play-services-auth = { module = "androidx.credentials:credentials-play-services-auth", version.ref = "credentials" }
 androidx-credentials-play-services-auth-vlatestversion = { module = "androidx.credentials:credentials-play-services-auth", version.ref = "credentialsPlayServicesAuthVersion" }
 androidx-credentials-vlatestversion = { module = "androidx.credentials:credentials", version.ref = "credentialsVersion" }
+androidx-espresso-core-v350 = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCoreVersion" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleRuntimeKtx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-material-icons-extended-core = { module = "androidx.compose.material:material-icons-extended-core", version.ref = "materialIconsExtendedCore" }
 androidx-material-icons-extended-outlined = { module = "androidx.compose.material:material-icons-extended-outlined", version.ref = "materialIconsExtendedOutlined" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+blurry = { module = "com.github.mmin18:blurry", version.ref = "blurry" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
 firebase-analytics = { module = "com.google.firebase:firebase-analytics" }

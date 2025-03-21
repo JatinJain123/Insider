@@ -25,15 +25,13 @@ class MainActivity : ComponentActivity() {
             InsiderTheme {
                 val repository = remember { NewsRepository(call) }
                 val model: MainViewModel = viewModel(factory = MainViewModelFactory(repository))
-
-                val loginStatus: MutableState<LoginStatus> = remember { mutableStateOf(LoginStatus()) }
                 val userProfileData: MutableState<UserProfileData> = remember { mutableStateOf(UserProfileData()) }
 
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Insider(model, loginStatus, userProfileData)
+                    Insider(model, userProfileData)
                 }
             }
         }

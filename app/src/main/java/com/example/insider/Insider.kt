@@ -9,12 +9,10 @@ import androidx.compose.runtime.setValue
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import kotlin.math.log
 
 @Composable
 fun Insider(
     model: MainViewModel,
-    loginStatus: MutableState<LoginStatus>,
     userProfileData: MutableState<UserProfileData>
 ) {
     var showSplash by remember { mutableStateOf(true) }
@@ -24,14 +22,13 @@ fun Insider(
             showSplash = false
          }
     } else {
-        Navigation(model, loginStatus, userProfileData)
+        Navigation(model, userProfileData)
     }
 }
 
 @Composable
 fun Navigation(
     model: MainViewModel,
-    loginStatus: MutableState<LoginStatus>,
     userProfileData: MutableState<UserProfileData>
 ) {
     val navController = rememberNavController()
@@ -44,14 +41,14 @@ fun Navigation(
                 model = model,
                 navigateToSearch = { navController.navigate(route = Screen.SearchScreen.route) },
                 navigateToPlatform = { navController.navigate(route = Screen.OnlinePlatformScreen.route) },
-                loginStatus = loginStatus,
                 userProfileData = userProfileData
             )
         }
 
         composable(route = Screen.SearchScreen.route) {
             Search(
-                navigateBackToMainScreen = { navController.popBackStack() }
+                navigateBackToMainScreen = { navController.popBackStack() },
+                userProfileData = userProfileData
             )
         }
 

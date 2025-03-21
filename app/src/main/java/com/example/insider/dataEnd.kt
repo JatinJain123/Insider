@@ -27,6 +27,7 @@ data class LoginStatus(
 )
 
 data class UserProfileData(
+    var loginStatus: Boolean = false,
     var name: String? = "",
     var email: String? = "",
     var imageId: String? = ""

@@ -33,6 +33,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -51,7 +52,6 @@ import coil.compose.rememberAsyncImagePainter
 @Composable
 fun MenuBarScreen(
     navigateBackToMainScreen: () -> Unit,
-    loginStatus: MutableState<LoginStatus>,
     userProfileData: MutableState<UserProfileData>
 ){
     val userName = remember { mutableStateOf("") }
@@ -68,14 +68,14 @@ fun MenuBarScreen(
                 userProfileData.value.name = it?.displayName
                 userProfileData.value.email = it?.email
                 userProfileData.value.imageId = it?.photoUrl.toString()
-                loginStatus.value.loginStatus = true
-                Toast.makeText(context, "Login Successfully!!", Toast.LENGTH_SHORT).show()
+                userProfileData.value.loginStatus = true
+                Toast.makeText(context, "Welcome ${it?.displayName}", Toast.LENGTH_SHORT).show()
                 navigateBackToMainScreen()
             }
         )
     }
 
-    if(!loginStatus.value.loginStatus) {
+    if(!userProfileData.value.loginStatus) {
         Dialog(
             onDismissRequest = navigateBackToMainScreen,
             properties = DialogProperties(usePlatformDefaultWidth = false)
@@ -168,8 +168,8 @@ fun MenuBarScreen(
                                     userProfileData.value.name = it?.displayName
                                     userProfileData.value.email = it?.email
                                     userProfileData.value.imageId = it?.photoUrl.toString()
-                                    loginStatus.value.loginStatus = true
-                                    Toast.makeText(context, "Login Successfully!!", Toast.LENGTH_SHORT).show()
+                                    userProfileData.value.loginStatus = true
+                                    Toast.makeText(context, "Welcome ${it?.displayName}", Toast.LENGTH_SHORT).show()
                                     navigateBackToMainScreen()
                                 }
                             )
@@ -231,7 +231,7 @@ fun MenuBarScreen(
                                         userProfileData.value.name = it?.displayName
                                         userProfileData.value.email = it?.email
                                         userProfileData.value.imageId = it?.photoUrl.toString()
-                                        loginStatus.value.loginStatus = true
+                                        userProfileData.value.loginStatus = true
                                         Toast.makeText(context, "Login Successfully!!", Toast.LENGTH_SHORT).show()
                                         navigateBackToMainScreen()
                                     }
@@ -251,7 +251,7 @@ fun MenuBarScreen(
             }
         }
     } else {
-        Dialog (
+        Dialog(
             onDismissRequest = navigateBackToMainScreen,
             properties = DialogProperties(usePlatformDefaultWidth = false)
         ) {
@@ -261,15 +261,17 @@ fun MenuBarScreen(
 
             Box(
                 modifier = Modifier
-                    .size(width = 320.dp, height = 240.dp)
-                    .clip(RoundedCornerShape(12.dp))
+                    .size(width = 350.dp, height = 300.dp)
+                    .shadow(elevation = 8.dp, shape = RoundedCornerShape(16.dp))
+                    .clip(RoundedCornerShape(16.dp))
                     .background(Color.White)
+                    .padding(12.dp)
             ) {
                 Column(
                     verticalArrangement = Arrangement.Top,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .fillMaxHeight(0.55f)
+                        .fillMaxHeight(0.50f)
                         .clip(
                             RoundedCornerShape(
                                 topEnd = 12.dp,
@@ -289,6 +291,7 @@ fun MenuBarScreen(
                                 contentScale = ContentScale.Crop,
                                 modifier = Modifier
                                     .size(90.dp)
+                                    .clip(RoundedCornerShape(50))
                             )
                         } else {
                             Image(
@@ -319,7 +322,7 @@ fun MenuBarScreen(
                             Text(
                                 text = if (userProfileData.value.email?.isBlank() == true) "No Email" else userProfileData.value.email.toString(),
                                 fontWeight = FontWeight.Medium,
-                                fontSize = 14.sp,
+                                fontSize = 15.sp,
                                 color = Color.Gray,
                             )
                         }
@@ -329,25 +332,26 @@ fun MenuBarScreen(
                 Column(
                     horizontalAlignment = Alignment.Start,
                     modifier = Modifier
-                        .fillMaxHeight(0.45f)
+                        .fillMaxHeight(0.50f)
                         .fillMaxWidth()
                         .align(Alignment.BottomCenter)
                 ) {
+
                     HorizontalDivider(
-                        color = Color.DarkGray,
+                        color = Color.Gray,
                         thickness = 2.dp,
-                        modifier = Modifier.padding(horizontal = 4.dp)
+                        modifier = Modifier.padding(horizontal = 16.dp)
                     )
 
-                    Spacer(modifier = Modifier.height(4.dp))
+                    Spacer(modifier = Modifier.height(12.dp))
 
                     Text(
                         text = "Settings",
                         fontWeight = FontWeight.Medium,
                         color = Color.Black,
-                        fontSize = 20.sp,
+                        fontSize = 16.sp,
                         modifier = Modifier
-                            .clickable { /* Navigate to settings screen */ }
+                            .clickable { }
                             .padding(vertical = 4.dp, horizontal = 8.dp)
                     )
 
@@ -355,20 +359,32 @@ fun MenuBarScreen(
                         text = "About",
                         fontWeight = FontWeight.Medium,
                         color = Color.Black,
-                        fontSize = 20.sp,
+                        fontSize = 16.sp,
                         modifier = Modifier
-                            .clickable { /* Navigate to privacy settings */ }
+                            .clickable { }
                             .padding(vertical = 4.dp, horizontal = 8.dp)
                     )
 
                     Text(
-                        text = "Logout ->",
+                        text = "Help",
+                        fontWeight = FontWeight.Medium,
+                        color = Color.Black,
+                        fontSize = 16.sp,
+                        modifier = Modifier
+                            .clickable { }
+                            .padding(vertical = 4.dp, horizontal = 8.dp)
+                    )
+
+                    Text(
+                        text = "[-> Sign out",
                         fontWeight = FontWeight.Medium,
                         color = Color.Red,
-                        fontSize = 20.sp,
+                        fontSize = 16.sp,
                         modifier = Modifier
                             .clickable {
-                                // Handle logout logic
+                                userProfileData.value.loginStatus = false
+                                Toast.makeText(context, "Sign out Successfully !", Toast.LENGTH_SHORT).show()
+                                navigateBackToMainScreen()
                             }
                             .padding(vertical = 2.dp, horizontal = 8.dp)
                     )
