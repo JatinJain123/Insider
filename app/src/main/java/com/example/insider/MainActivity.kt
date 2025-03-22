@@ -24,7 +24,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             InsiderTheme {
                 val repository = remember { NewsRepository(call) }
-                val model: MainViewModel = viewModel(factory = MainViewModelFactory(repository))
+                val searchRepository = remember { SearchRepository(searchCall) }
+                val model: MainViewModel = viewModel(factory = MainViewModelFactory(repository, searchRepository))
                 val userProfileData: MutableState<UserProfileData> = remember { mutableStateOf(UserProfileData()) }
 
                 Surface(

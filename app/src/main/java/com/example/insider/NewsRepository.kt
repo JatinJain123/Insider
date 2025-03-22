@@ -24,3 +24,9 @@ class NewsRepository(private val call: ApiService) {
         )
     }
 }
+
+class SearchRepository(private val searchCall: BackendApiService) {
+    suspend fun fetchSearchResult(query: SearchQuery): List<Article> {
+        return searchCall.fetchSearchResult(query)
+    }
+}

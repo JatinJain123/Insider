@@ -141,10 +141,10 @@ fun TopHeader(
                         modifier = Modifier
                             .size(30.dp)
                             .clickable{
-                                //if(userProfileData.value.loginStatus)
+                                if(userProfileData.value.loginStatus)
                                     navigateToSearch()
-//                                else
-//                                    Toast.makeText(context, "Please Login First !!", Toast.LENGTH_SHORT).show()
+                                else
+                                    Toast.makeText(context, "Please Login First !!", Toast.LENGTH_SHORT).show()
                             }
                     )
 

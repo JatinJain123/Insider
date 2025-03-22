@@ -22,8 +22,10 @@ data class NewsResponse (
     val articles: List<Article>
 )
 
-data class LoginStatus(
-    var loginStatus: Boolean = false
+data class LoadState(
+    val loading: Boolean = true,
+    val error: String? = null,
+    val data: NewsResponse? = null
 )
 
 data class UserProfileData(
@@ -32,3 +34,5 @@ data class UserProfileData(
     var email: String? = "",
     var imageId: String? = ""
 )
+
+data class SearchQuery(val query: String)

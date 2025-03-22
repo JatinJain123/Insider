@@ -47,8 +47,8 @@ fun Navigation(
 
         composable(route = Screen.SearchScreen.route) {
             Search(
-                navigateBackToMainScreen = { navController.popBackStack() },
-                userProfileData = userProfileData
+                model = model,
+                navigateBackToMainScreen = { navController.popBackStack() }
             )
         }
 
